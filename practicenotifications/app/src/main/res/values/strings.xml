@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">practicenotifications</string>
+    <string name="channel_name">testChannel</string>
+    <string name="channel_description">hihi</string>
 </resources>

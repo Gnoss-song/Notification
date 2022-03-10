@@ -3,10 +3,10 @@ package com.example.practicenotifications
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -18,7 +18,7 @@ const val CHANNEL_ID = "testChannel"
 const val NOTIFICATION_ID = 0
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var notificationManager: NotificationManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +41,12 @@ class MainActivity : AppCompatActivity() {
                     val token = task.result
                     // Log and toast
                     Toast.makeText(baseContext, "${token}", Toast.LENGTH_SHORT).show()
-                    Log.d("TESTSTS","${token}")
                 }
             })
+        }
+        binding.btnDynamic.setOnClickListener {
+            val intent = Intent(this,DynamicLinkActivity::class.java)
+            startActivity(intent)
         }
     }
 

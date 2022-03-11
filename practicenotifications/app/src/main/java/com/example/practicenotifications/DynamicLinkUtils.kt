@@ -8,14 +8,19 @@ import android.util.Log
 import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 
+data class ItemData(
+    val id : Long = 1,
+    val name : String = "STS"
+)
+
 object DynamicLinkUtils {
     val TAG = DynamicLinkUtils::class.java.name
 
-    private fun getDeepLink(scheme: String, key: String?, pheedId: String?): Uri {
+    private fun getDeepLink(scheme: String, key: String?,key2 : String?, pheedId: String?, data : ItemData?): Uri {
         return if (key == null) {
             Uri.parse("https://example.com/${scheme}")
         } else {
-            Uri.parse("https://example.com/${scheme}/?${key}=$pheedId")
+            Uri.parse("https://example.com/${scheme}/?${key}=$pheedId&${key2}=$data")
         }
     }
 
@@ -23,11 +28,12 @@ object DynamicLinkUtils {
         activity: Activity,
         scheme: String,
         key: String? = null,
+        key2 : String? = null,
+        data : ItemData? = null,
         pheedId: String? = null
     ) {
         FirebaseDynamicLinks.getInstance().createDynamicLink()
-            .setLink(getDeepLink(scheme, key, pheedId))
-//            .setDomainUriPrefix("practicenotifications.page")
+            .setLink(getDeepLink(scheme, key,key2, pheedId,data))
             .setDynamicLinkDomain("practicenotifications.page.link")
             .setAndroidParameters(
                 DynamicLink.AndroidParameters.Builder(activity.packageName)

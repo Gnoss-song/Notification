@@ -3,6 +3,7 @@ package com.example.practicenotifications
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.practicenotifications.DynamicLinkUtils.onDynamicLinkClick
+import com.example.practicenotifications.SchemeActivity.Companion.PARAM_ID2
 import com.example.practicenotifications.databinding.ActivityDynamicLinkBinding
 
 
@@ -29,7 +30,9 @@ class DynamicLinkActivity : AppCompatActivity() {
                 this,
                 SchemeActivity.SCHEME_PHEED,
                 SchemeActivity.PARAM_ID,
-                "1"
+                PARAM_ID2,
+                ItemData(),
+                pheedId = "1"
             )
         }
 
@@ -38,7 +41,7 @@ class DynamicLinkActivity : AppCompatActivity() {
                 this,
                 SchemeActivity.SCHEME_PHEED,
                 SchemeActivity.PARAM_ID,
-                "2"
+                pheedId = "2"
             )
         }
 
@@ -47,7 +50,7 @@ class DynamicLinkActivity : AppCompatActivity() {
                 this,
                 SchemeActivity.SCHEME_COMMENT,
                 SchemeActivity.PARAM_ID,
-                "1000"
+                pheedId = "1000"
             )
         }
         binding.btnShareComment2.setOnClickListener {
@@ -55,7 +58,7 @@ class DynamicLinkActivity : AppCompatActivity() {
                 this,
                 SchemeActivity.SCHEME_COMMENT,
                 SchemeActivity.PARAM_ID,
-                "1001"
+                pheedId = "1001"
             )
         }
     }
